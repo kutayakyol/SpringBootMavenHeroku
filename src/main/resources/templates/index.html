@@ -8,10 +8,9 @@
 
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-    <!--
-    <link href="../../static/css/guru.css"
-          th:href="@{css/guru.css}" rel="stylesheet" media="screen"/>
-    -->
+    <link href="/static/css/nav.css"
+          th:href="@{css/nav.css}" rel="stylesheet" media="screen"/>
+
 </head>
 <body>
 
@@ -20,12 +19,11 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+                    <a class="navbar-brand" href="#" th:href="@{/index.html}">Ana Sayfa</a>
                     <ul class="nav navbar-nav">
-                        <li><a href="#" th:href="@{/products}">Products</a></li>
-                        <li><a href="#" th:href="@{/product/new}">Create Product</a></li>
+                        <li><a href="#" th:href="@{/addUser}">Kullanıcı Kaydı</a></li>
+                        <li><a href="#" th:href="@{/getAll}">Kullanıcı Listesi</a></li>
                     </ul>
-
                 </div>
             </div>
         </nav>
