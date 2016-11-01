@@ -1,10 +1,7 @@
 package com.kutay.controller;
 
-import com.kutay.entities.Note;
 import com.kutay.entities.User;
 import com.kutay.service.UserService;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Kutay on 28.10.2016.
@@ -29,10 +25,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String index() {
+        return "userList";
+    }
+
     @RequestMapping(value = "getAll", method = RequestMethod.GET)
     public String getAllRolList(Model m, ModelMap modelMap, HttpSession httpsession) {
 
-            modelMap.put("listRol", userService.getAll());
+        modelMap.put("user", new User());
+
+        m.addAttribute("listUser", userService.getAll());
 
         return "userList";
     }
@@ -76,6 +79,20 @@ public class UserController {
 
     @RequestMapping(value = "createUser", params = "cancel", method = RequestMethod.POST)
     public String createUserCancel(@ModelAttribute(value = "User") User user, ModelMap modelMap, HttpSession session, BindingResult result) {
+
+        return "redirect:userList.html";
+    }
+
+    @RequestMapping(value = "getNote", method = RequestMethod.GET)
+    public String getUserNote(@RequestParam(value = "id") BigDecimal id, Model m, ModelMap modelMap, HttpSession httpsession) {
+
+        modelMap.put("note", userService.getNote(id));
+
+        return "userNote";
+    }
+
+    @RequestMapping(value = "getNote", params = "cancel", method = RequestMethod.POST)
+    public String backUserList( ModelMap modelMap, HttpSession session, BindingResult result) {
 
         return "redirect:userList.html";
     }

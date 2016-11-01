@@ -1,23 +1,25 @@
 package com.kutay.entities;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.Configuration;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * Created by Kutay on 28.10.2016.
- */
+@Entity
+@Table(name = "USER")
 public class User {
+
+    // The entity fields (private)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private BigDecimal id;
     private String userName;
     private String note;
     private Date createDate;
 
-    public User() {
-    }
+    // Public methods
+
+    public User() { }
 
     public BigDecimal getId() {
         return id;
@@ -50,7 +52,7 @@ public class User {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+    // Getters and setters methods
+    // ...
 
 }
-
-

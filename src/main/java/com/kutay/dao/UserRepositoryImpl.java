@@ -1,9 +1,7 @@
 package com.kutay.dao;
 
-import com.kutay.entities.Note;
 import com.kutay.entities.User;
 import com.kutay.util.SessionFactoryUtil;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -29,10 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
             s.beginTransaction();
             lst = s.createCriteria(User.class).list();
 
-            s.getTransaction().commit();
-
-
-
+            System.out.println("UserRepository...getAll()...entered!");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,8 +36,6 @@ public class UserRepositoryImpl implements UserRepository {
             s.close();
             SessionFactoryUtil.close();
         }
-
-
 
         return lst;
 
@@ -69,8 +62,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<Note> getAllNotes(BigDecimal id) {
-        List<Note> lst = new ArrayList<Note>();
+    public User getNote(BigDecimal id) {
+        User user=new User();
 
         SessionFactoryUtil.buildSessionFactory();
         Session s = null;
@@ -78,38 +71,13 @@ public class UserRepositoryImpl implements UserRepository {
         s = SessionFactoryUtil.getInstance().openSession();
         try {
             s.beginTransaction();
-            String SQL_QUERY = "from com.kutay.entities.Note as a where a.id in (select kr.noteId from com.kutay.entities.User kr where kr.id=?)";
+
+            /*tring SQL_QUERY = "from com.kutay.entities.Note /*as a where a.id in (select kr.noteId from com.kutay.entities.User kr where kr.id=?)";
             Query query = s.createQuery(SQL_QUERY);//.setString("kullaniciadi", userName);
             query.setParameter(0, id);
-            lst = query.list();
+            lst = query.list();*/
 
-            s.getTransaction().commit();
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            s.getTransaction().rollback();
-        } finally {
-            s.close();
-            SessionFactoryUtil.close();
-        }
-
-
-
-        return lst;
-
-    }
-    @Override
-    public void createNote(Note note) {
-        SessionFactoryUtil.buildSessionFactory();
-        Session s = null;
-        Transaction tx = null;
-        s = SessionFactoryUtil.getInstance().openSession();
-        try {
-            s.beginTransaction();
-            s.save(note);
+            user = (User) s.get(User.class, id);
             s.getTransaction().commit();
 
         } catch (Exception e) {
@@ -119,6 +87,10 @@ public class UserRepositoryImpl implements UserRepository {
             s.close();
             SessionFactoryUtil.close();
         }
+
+
+
+        return user;
 
     }
 }

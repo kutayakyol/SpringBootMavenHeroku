@@ -1,6 +1,5 @@
 package com.kutay.dao;
 
-import com.kutay.entities.Note;
 import com.kutay.entities.User;
 
 import java.math.BigDecimal;
@@ -13,6 +12,5 @@ public interface UserRepository {
 
     List<User> getAll() ;
     void create(User user);
-    List<Note> getAllNotes(BigDecimal id) ;
-    void createNote (Note note);
+    User getNote(BigDecimal id) ;
 }
