@@ -7,6 +7,7 @@
 
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <title>Ana Sayfa</title>
 
 </head>
 <body>
@@ -16,10 +17,10 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" th:href="/">Ana Sayfa</a>
+                    <a class="navbar-brand" href="#">Ana Sayfa</a>
                     <ul class="nav navbar-nav">
-                        <li><a href="#" th:href="@{users/addUser}">Kullanıcı Kaydı</a></li>
-                        <li><a href="#" th:href="@{users/getall}">Kullanıcı Listesi</a></li>
+                        <li><a href="#" th:href="@{/users/addUser}">Kullanıcı Kaydı</a></li>
+                        <li><a href="#" th:href="@{/users/getAll}">Kullanıcı Listesi</a></li>
                     </ul>
                 </div>
             </div>

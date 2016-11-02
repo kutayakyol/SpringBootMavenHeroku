@@ -2,13 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Kullanıcı Yapılacak Listesi</title>
+    <title>Kullanıcı Listesi</title>
 
-    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
 <div class="container">
-    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
     <div th:if="${not #lists.isEmpty(listUser)}">
         <h2>Kullanıcı Listesi</h2>
         <table class="table table-striped">
@@ -17,8 +16,9 @@
                 <th>Oluşturma Zamanı</th>
             </tr>
             <tr th:each="listUser : ${listUser}">
-                <td th:text="${listUser.userName}"><a href="/getNote/${listUser.id}">Kullanıcı Adı</a></td>
+                <td th:text="${listUser.userName}" >Kullanıcı Adı</td>
                 <td th:text="${listUser.createDate}">Oluşturma Zamanı</td>
+                <td> <a href="#" th:href ="@{/users/getNote(id=${listUser.id})}">Yapılacak listesi</a></td>
             </tr>
         </table>
 

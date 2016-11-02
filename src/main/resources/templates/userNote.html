@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Yapılacak Listesi</title>
+
+</head>
+<body>
+<div class="container">
+
+    <div th:each="note : ${note}" th:if="${not #lists.isEmpty(note)}">
+        <h2 th:text="${note.userName}"> </h2>
+        <h3>Yapılacaklar Listesi</h3>
+        <table class="table table-striped" style="border: solid">
+            <tr>
+                <th>Yapılacak Notlar</th>
+                <th>Oluşturma Zamanı</th>
+            </tr>
+            <tr>
+                <td th:text="${note.note}" >Yapılacak Notlar</td>
+                <td th:text="${note.createDate}">Oluşturma Zamanı</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

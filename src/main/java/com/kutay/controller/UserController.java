@@ -20,27 +20,27 @@ import java.util.Date;
  * Created by Kutay on 28.10.2016.
  */
 @Controller
+@RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String index() {
-        return "userList";
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String index(Model m) {
+
+        return "home";
     }
 
-    @RequestMapping(value = "getAll", method = RequestMethod.GET)
-    public String getAllRolList(Model m, ModelMap modelMap, HttpSession httpsession) {
-
-        modelMap.put("user", new User());
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    public String getAllRolList(Model m) {
 
         m.addAttribute("listUser", userService.getAll());
 
         return "userList";
     }
 
-    @RequestMapping(value = "addUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public String addRol(Model m, ModelMap modelMap) {
 
         User u = new User();
@@ -48,7 +48,7 @@ public class UserController {
             m.addAttribute("user", u);
             modelMap.put("User", u);
 
-        return "addUser";
+        return "userAdd";
     }
 
     @RequestMapping(value = "createUser", params = "save", method = RequestMethod.POST)
