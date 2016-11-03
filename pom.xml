@@ -43,11 +43,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.1-901.jdbc4</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -150,11 +145,6 @@
 						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* ToDoListSpringMavenApplication</web>
 					</processTypes>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
 			</plugin>
 		</plugins>
 	</build>
