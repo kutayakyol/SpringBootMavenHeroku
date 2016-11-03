@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      >
+>
 <head lang="en">
-    <title>Kullanıcı Kayıt</title>
+    <title>Kullanıcı Yapılacaklar Listesi Güncelleme</title>
 </head>
 <body>
 
@@ -22,16 +22,18 @@
     </div>
 </div>
 
-<form action="#" th:action="@{/users/createUser}" method="POST" th:object="${User}">
-    <input type="hidden" name="id" value="${user.id}"/>
+<form action="#" th:action="@{/users/updateNote}" method="POST" th:object="${User}">
+    <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
+    <input type="hidden" th:field="*{userName}" th:value="${user.userName}"/>
+    <input type="hidden" th:field="*{createDate}" th:value="${user.createDate}"/>
     <table>
         <tr>
-            <td><label class="label"><b>Kullanıcı Adı :</b> </label></td>
-            <td><input type="text" th:field="*{userName}" th:value="${user.userName}" style="height: 40px;width:200px"/></td>
+            <td><label class="label"><b>Yapılacaklar Listesi :</b> </label></td>
+            <td><input type="text" th:field="*{note}" th:value="${user.note}" style="height: 100px;width:300px"/></td>
         </tr>
         <br/>
         <tr>
-            <td><input type="submit" name="save" value="Kaydet"/></td>
+            <td><input type="submit" name="save" value="Güncelle"/></td>
             <td><input type="submit"  name="cancel" value="İptal"/></td>
         </tr>
     </table>

@@ -1,5 +1,7 @@
 package com.kutay.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,8 +13,10 @@ public class User {
     // The entity fields (private)
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name="id",strategy="increment")
+    @GeneratedValue(generator="id")
     private BigDecimal id;
+
     private String userName;
     private String note;
     private Date createDate;

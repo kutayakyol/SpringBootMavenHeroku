@@ -7,6 +7,22 @@
 </head>
 <body>
 <div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/users}">Ana Sayfa</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/users/addUser}">Kullanıcı Kaydı</a></li>
+                        <li><a href="#" th:href="@{/users/getAll}">Kullanıcı Listesi</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
 
     <div th:each="note : ${note}" th:if="${not #lists.isEmpty(note)}">
         <h2 th:text="${note.userName}"> </h2>
@@ -20,6 +36,7 @@
                 <td th:text="${note.note}" >Yapılacak Notlar</td>
                 <td th:text="${note.createDate}">Oluşturma Zamanı</td>
             </tr>
+            <tr><a href="#" th:href="@{/users/editNote(id=${note.id})}">Güncelle</a></tr>
         </table>
 
     </div>

@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService {
     public User getNote(BigDecimal id) {
         return userRepository.getNote(id);
     }
+
+    @Override
+    public void editNote(User u){
+        userRepository.editNote(u);
+    }
 }

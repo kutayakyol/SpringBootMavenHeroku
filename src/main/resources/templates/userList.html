@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head lang="en">
 
     <title>Kullanıcı Listesi</title>
@@ -7,23 +8,37 @@
 </head>
 <body>
 <div class="container">
-
-    <div th:if="${not #lists.isEmpty(listUser)}">
-        <h2>Kullanıcı Listesi</h2>
-        <table class="table table-striped">
-            <tr>
-                <th>Kullanıcı Adı</th>
-                <th>Oluşturma Zamanı</th>
-            </tr>
-            <tr th:each="listUser : ${listUser}">
-                <td th:text="${listUser.userName}" >Kullanıcı Adı</td>
-                <td th:text="${listUser.createDate}">Oluşturma Zamanı</td>
-                <td> <a href="#" th:href ="@{/users/getNote(id=${listUser.id})}">Yapılacak listesi</a></td>
-            </tr>
-        </table>
-
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/users}">Ana Sayfa</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/users/addUser}">Kullanıcı Kaydı</a></li>
+                        <li><a href="#" th:href="@{/users/getAll}">Kullanıcı Listesi</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
 </div>
 
+    <div class="container">
+        <div th:if="${not #lists.isEmpty(listUser)}">
+            <h2>Kullanıcı Listesi</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Kullanıcı Adı</th>
+                    <th>Oluşturma Zamanı</th>
+                </tr>
+                <tr th:each="listUser : ${listUser}">
+                    <td th:text="${listUser.userName}">Kullanıcı Adı</td>
+                    <td th:text="${listUser.createDate}">Oluşturma Zamanı</td>
+                    <td><a href="#" th:href="@{/users/getNote(id=${listUser.id})}">Yapılacak listesi</a></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
 </body>
 </html>

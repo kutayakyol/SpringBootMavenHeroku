@@ -93,4 +93,24 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
 
     }
+
+    @Override
+    public void editNote(User u) {
+        SessionFactoryUtil.buildSessionFactory();
+        Session s = null;
+        Transaction tx = null;
+        s = SessionFactoryUtil.getInstance().openSession();
+        try {
+            s.beginTransaction();
+            s.update(u);
+            s.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+            SessionFactoryUtil.close();
+        }
+    }
 }

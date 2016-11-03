@@ -4,7 +4,7 @@
 
     <class name="com.kutay.entities.User" table="user">
         <id column="ID" name="id" type="big_decimal">
-            <generator class="assigned"/>
+            <generator class="increment"/>
         </id>
         <property name="userName" type="string">
             <column name="user_name" />

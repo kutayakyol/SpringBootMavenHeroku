@@ -13,4 +13,6 @@ public interface UserRepository {
     List<User> getAll() ;
     void create(User user);
     User getNote(BigDecimal id) ;
+    void editNote(User u);
+
 }
