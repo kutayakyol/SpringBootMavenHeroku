@@ -5,9 +5,9 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://ehc1u4pmphj917qf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ebzjpgvfwlj7r1to</property>
-    <property name="hibernate.connection.username">yoih4gmcqcr9r6ee</property>
-    <property name="hibernate.connection.password">k8d7qodhe0hd3vls</property>
+    <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-04.cleardb.net:3306/heroku_f7acffc10b2f150</property>
+    <property name="hibernate.connection.username">bd546700991eca</property>
+    <property name="hibernate.connection.password">6970d9ba3937d1a</property>
 
     <property name="hibernate.show_sql">true</property>
 
