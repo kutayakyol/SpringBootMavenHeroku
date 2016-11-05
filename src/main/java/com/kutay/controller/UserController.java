@@ -132,6 +132,7 @@ public class UserController {
 
             u.setNote(user.getNote());
 
+
             userService.editNote(u);
             session.setAttribute("statumessage", "S");
         } catch (Exception e) {

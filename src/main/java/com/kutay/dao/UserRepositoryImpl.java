@@ -25,10 +25,11 @@ public class UserRepositoryImpl implements UserRepository {
         s = SessionFactoryUtil.getInstance().openSession();
         try {
             s.beginTransaction();
-            lst = s.createCriteria(User.class).list();
+            lst = s.createCriteria(User.class).setCacheable(true).list();
 
             System.out.println("UserRepository...getAll()...entered!");
 
+            s.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             s.getTransaction().rollback();
